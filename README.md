@@ -14,7 +14,7 @@ Desenvolver uma aplicação web para centralizar informações de contatos, apli
 - [x] Pesquisa por nome e endereço de e-mail.
 - [x] Visualização individual dos contatos.
 - [x] Validação dos dados recebidos.
-- [ ] Melhorias na interface e experiência do usuário.
+- [x] Melhorias na interface e experiência do usuário.
 
 ## 🛠️ Tecnologias utilizadas
 

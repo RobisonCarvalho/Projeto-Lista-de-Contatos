@@ -3,14 +3,36 @@
 
 require_once __DIR__ . '/../config/database.php';
 
+// Receber o termo de pesquisa
+$pesquisa = trim($_GET['pesquisa'] ?? '');
+
 try {
 
-    // Consultar todos os contatos
-    $sql = "SELECT * FROM contatos ORDER BY criado_em DESC";
+    if ($pesquisa !== '') {
 
-    $stmt = $pdo->query($sql);
+        // Pesquisar por nome ou e-mail
+        $sql = "SELECT * FROM contatos
+                WHERE nome LIKE :nome
+                OR email LIKE :email
+                ORDER BY criado_em DESC";
 
-    // Recuperar os resultados
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->execute([
+            ':nome' => "%$pesquisa%",
+            ':email' => "%$pesquisa%"
+        ]);
+
+    } else {
+
+        // Listar todos os contatos
+        $sql = "SELECT * FROM contatos
+                ORDER BY criado_em DESC";
+
+        $stmt = $pdo->query($sql);
+
+    }
+
     $contatos = $stmt->fetchAll();
 
 } catch (PDOException $e) {
@@ -32,6 +54,24 @@ try {
 <body>
 
     <h1>Contatos cadastrados</h1>
+
+    <!-- Formulário de pesquisa -->
+    <form action="" method="GET">
+
+        <input
+            type="text"
+            name="pesquisa"
+            placeholder="Pesquisar por nome ou e-mail..."
+            value="<?= htmlspecialchars($pesquisa) ?>"
+        >
+
+        <button type="submit">Pesquisar</button>
+
+        <a href="listar-contatos.php">Limpar pesquisa</a>
+
+    </form>
+
+    <br>
 
     <?php if (count($contatos) > 0): ?>
 
@@ -69,7 +109,7 @@ try {
 
     <?php else: ?>
 
-        <p>Nenhum contato cadastrado.</p>
+        <p>Nenhum contato encontrado.</p>
 
     <?php endif; ?>
 

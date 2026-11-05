@@ -85,6 +85,7 @@ try {
                     <th>Telefone</th>
                     <th>Mensagem</th>
                     <th>Data</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
 
@@ -99,7 +100,13 @@ try {
                         <td><?= htmlspecialchars($contato['telefone'] ?? '') ?></td>
                         <td><?= htmlspecialchars($contato['mensagem'] ?? '') ?></td>
                         <td><?= htmlspecialchars($contato['criado_em']) ?></td>
+                        <td>
+                            <a href="visualizar-contato.php?id=<?= urlencode((string) $contato['id']) ?>">
+                                Visualizar
+                            </a>
+                        </td>
                     </tr>
+                    
 
                 <?php endforeach; ?>
 

@@ -56,8 +56,8 @@ textarea {
 }
 
 .topbar {
-    background: var(--verde);
-    color: var(--branco);
+    background: var(--areia);
+    color: var(--verde);
     padding: 20px 0;
 }
 
@@ -79,7 +79,7 @@ textarea {
 }
 
 .topbar a {
-    color: var(--branco);
+    color: var(--verde);
     font-size: 14px;
 }
 

@@ -8,7 +8,7 @@ Desenvolver uma aplicação web que permita centralizar informações de contato
 
 ## ⚙️ Funcionalidades previstas
 
-- [x] Conexão com banco de dados MySQL.
+- [ ] Conexão com banco de dados MySQL.
 - [ ] Cadastro e armazenamento de contatos.
 - [ ] Listagem dos contatos cadastrados.
 - [ ] Pesquisa por nome e e-mail.

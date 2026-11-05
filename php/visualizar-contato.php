@@ -44,44 +44,97 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Detalhes do Contato</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js" defer></script>
 </head>
 
 <body>
 
-    <h1>Detalhes do Contato</h1>
+    <header class="topbar">
+        <div class="container topbar-content">
 
-    <p>
-        <strong>ID:</strong>
-        <?= htmlspecialchars((string) $contato['id']) ?>
-    </p>
+            <div class="logo">RC<span>.</span> CONTATOS</div>
 
-    <p>
-        <strong>Nome:</strong>
-        <?= htmlspecialchars($contato['nome']) ?>
-    </p>
+            <a href="listar-contatos.php">Ver todos os contatos →</a>
 
-    <p>
-        <strong>E-mail:</strong>
-        <?= htmlspecialchars($contato['email']) ?>
-    </p>
+        </div>
+    </header>
 
-    <p>
-        <strong>Telefone:</strong>
-        <?= htmlspecialchars($contato['telefone'] ?? '') ?>
-    </p>
+    <main class="container">
 
-    <p>
-        <strong>Mensagem:</strong>
-        <?= nl2br(htmlspecialchars($contato['mensagem'] ?? '')) ?>
-    </p>
+        <div class="page-heading">
+            <h1>Detalhes do contato</h1>
+            <p>Visualize todas as informações deste cadastro.</p>
+        </div>
 
-    <p>
-        <strong>Data de cadastro:</strong>
-        <?= htmlspecialchars($contato['criado_em']) ?>
-    </p>
+        <section class="card">
 
-    <a href="listar-contatos.php">Voltar para contatos</a>
+            <h2>
+                <?= htmlspecialchars($contato['nome'], ENT_QUOTES, 'UTF-8') ?>
+            </h2>
+
+            <div class="contact-details">
+
+                <div class="form-group">
+                    <label>ID do contato</label>
+                    <p>
+                        #<?= htmlspecialchars((string) $contato['id']) ?>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label>Nome completo</label>
+                    <p>
+                        <?= htmlspecialchars($contato['nome']) ?>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <p>
+                        <?= htmlspecialchars($contato['email']) ?>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <p>
+                        <?= htmlspecialchars($contato['telefone'] ?? '') ?: 'Não informado' ?>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label>Observações</label>
+                    <p>
+                        <?= nl2br(htmlspecialchars($contato['mensagem'] ?? '')) ?: 'Nenhuma observação cadastrada.' ?>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label>Data de cadastro</label>
+                    <p>
+                        <?= htmlspecialchars($contato['criado_em']) ?>
+                    </p>
+                </div>
+
+            </div>
+
+            <a href="listar-contatos.php" class="btn btn-primary">
+                ← Voltar para contatos
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            Sistema de Contatos · Robison Carvalho
+        </div>
+    </footer>
 
 </body>
 
